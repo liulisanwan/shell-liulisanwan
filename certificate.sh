@@ -206,26 +206,12 @@ ssl_cert_issue_by_cloudflare() {
         LOGI "acme.sh 还未安装，跳过证书存在性检查..."
     fi
 
-#    LOGD "请设置API密钥:"
-#    read -p "Input your key here:" CF_GlobalKey
-#    LOGD "你的API密钥为:${CF_GlobalKey}"
-#
-#    LOGD "请设置注册邮箱:"
-#    read -p "Input your email here:" CF_AccountEmail
-#    LOGD "你的注册邮箱为:${CF_AccountEmail}"
-    DEFAULT_CF_GlobalKey="f123711180853498fa404a078a3f5226b3416"
-    DEFAULT_CF_AccountEmail="liulisanwan@mail.com"
-
-    # 读取API密钥，如果用户未输入，则使用默认值
     LOGD "请设置API密钥:"
-    read -p "Input your key here [default: $DEFAULT_CF_GlobalKey]: " CF_GlobalKey
-    CF_GlobalKey="${CF_GlobalKey:-$DEFAULT_CF_GlobalKey}"
+    read -p "Input your key here:" CF_GlobalKey
     LOGD "你的API密钥为:${CF_GlobalKey}"
 
-    # 读取注册邮箱，如果用户未输入，则使用默认值
     LOGD "请设置注册邮箱:"
-    read -p "Input your email here [default: $DEFAULT_CF_AccountEmail]: " CF_AccountEmail
-    CF_AccountEmail="${CF_AccountEmail:-$DEFAULT_CF_AccountEmail}"
+    read -p "Input your email here:" CF_AccountEmail
     LOGD "你的注册邮箱为:${CF_AccountEmail}"
 
     ~/.acme.sh/acme.sh --set-default-ca --server letsencrypt
